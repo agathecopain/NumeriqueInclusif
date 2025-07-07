@@ -4,11 +4,14 @@
   "description": "Ce blog recense les différents handicaps rencontrés dans l’usage du numérique et propose des solutions concrètes pour améliorer l’accessibilité et l’inclusion digitale.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js",
+    "dev": "nodemon app.js"
   },
   "repository": "git+https://github.com/agathecopain/NumeriqueInclusif.git",
   "keywords": [],
   "author": "Agathe Boncompain <agathe.boncompain@gmail.com>",
+  "type": "module",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/agathecopain/NumeriqueInclusif/issues"

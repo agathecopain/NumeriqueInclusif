@@ -1,0 +1,48 @@
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
+
+
+<h1>Formulaire de contact</h1>
+{% if error %}<p style="color:red;">{{ error }}</p>{% endif %}
+{% if success %}<p style="color:green;">{{ success }}</p>{% endif %}
+
+
+<form method="post" action="/contact">
+    <div class="mb-3">
+        <label for="name" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
+    </div>
+    <div class="mb-3">
+        <label for="firstname" class="form-label">Prénom</label>
+        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Votre prénom" required>
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label">Adresse email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" required>
+    </div>
+    <div class="mb-3">
+        <label for="messages" class="form-label">Votre message</label>
+        <textarea class="form-control" id="messages" name="messages" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+
+<h2>Contacts enregistrés :</h2>
+{% if contacts.length > 0 %}
+    <ul>
+        {% for c in contacts %}
+            <li>
+                <strong>{{ c.name }} {{ c.firstname }}</strong><br>
+                Email : {{ c.email }}<br>
+                Message : {{ c.messages }}
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Aucun contact enregistré.</p>
+{% endif %}
+
