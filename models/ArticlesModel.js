@@ -5,7 +5,7 @@ export async function createArticle(
   category_id,
   description,
   content,
-  image_url = null
+  image_url
 ) {
   await pool.query(
     "INSERT INTO articles (title, category_id, description, content, image_url) VALUES (?,?,?,?,?)",

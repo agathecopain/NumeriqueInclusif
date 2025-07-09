@@ -13,7 +13,6 @@
   "author": "Agathe Boncompain <agathe.boncompain@gmail.com>",
   "type": "module",
   "license": "ISC",
-  "type": "module",
   "bugs": {
     "url": "https://github.com/agathecopain/NumeriqueInclusif/issues"
   },
@@ -23,8 +22,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "express-validator": "^7.2.1",
     "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
     "multer": "^2.0.1",
     "mysql2": "^3.14.1",
     "twig": "^1.17.1"

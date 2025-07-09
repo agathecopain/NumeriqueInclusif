@@ -6,13 +6,15 @@ import {
   updateArtcile,
   deleteArticle,
 } from "../controllers/articlesControllers.js";
+import { upload } from "../middleware/upload.js";
 
 const router = express.Router();
 
-router.post("/edit", edit);
+router.post("/edit", upload.single("image"), edit);
 router.get("/", listArticle);
 router.get("/edit", showArticleForm);
 router.put("/:id", updateArtcile);
 router.delete("/:id", deleteArticle);
 
 export default router;
+
