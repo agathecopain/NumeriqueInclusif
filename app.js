@@ -1,7 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv'
 import contactRoute from './routes/contactRoute.js';
-
+import categoriesRoutes from './routes/categoriesRoutes.js'
+import path from "path";
 
 dotenv.config();
 
@@ -15,8 +16,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-app.use('/contact', contactRoute);
-
+app.use("/api/contact", contactRoute);
+app.use("/api/categories", categoriesRoutes);
 
 
 app.listen(PORT, () => {
