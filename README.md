@@ -1,11 +1,19 @@
 # NumeriqueInclusif
 Ce blog recense les différents handicaps rencontrés dans l’usage du numérique et propose des solutions concrètes pour améliorer l’accessibilité et l’inclusion digitale.
 
-## Initialisation
-npm init -y
-yarn add express mysql2 twig dotenv nodemon bcrypt cors express-session multer
+## Installation rapide
 
-## Arborescence
+### Cloner le projet
+git clone https://github.com/agathecopain/NumeriqueInclusif.git
+
+### Installer les dépendances
+yarn install
+
+### Lancer le projet en développement
+yarn start
+
+
+### Arborescence
 handiBlog/
 ├── config/
 |   └── db.js
