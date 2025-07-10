@@ -13,13 +13,14 @@ export async function createArticle(
   );
 }
 
-export const getAllArticles = () => {
-  return pool.query(
-    `SELECT articles.*, categories.nom, users.pseudo
+export const getAllArticles = async () => {
+  const [rows] = await pool.query(
+    `SELECT articles.*, categories.name, users.pseudo
     FROM articles
     LEFT JOIN users ON articles.user_id = users.id
     LEFT JOIN categories ON articles.category_id = categories.id`
   );
+  return rows
 };
 
 export const getArticlesByCategory = (category_name) => {

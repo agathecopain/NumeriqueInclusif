@@ -28,6 +28,7 @@ export async function edit(req, res) {
 export const listArticle = async (req, res) => {
   const [rows] = await getAllArticles();
   res.json(rows);
+
 };
 
 export const updateArtcile = async (req, res) => {

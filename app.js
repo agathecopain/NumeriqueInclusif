@@ -1,11 +1,12 @@
-import express from 'express';
-import dotenv from 'dotenv'
-import contactRoute from './routes/contactRoute.js';
-import categoriesRoutes from './routes/categoriesRoutes.js'
-import { getAllCategories } from './models/CategoriesModel.js';
-import { showCategorie } from './controllers/categoriesControllers.js';
+import express from "express";
+import dotenv from "dotenv";
+import contactRoute from "./routes/contactRoute.js";
+import categoriesRoutes from "./routes/categoriesRoutes.js";
+import { getAllCategories } from "./models/CategoriesModel.js";
+import { showCategorie } from "./controllers/categoriesControllers.js";
 import path from "path";
 import articleRoute from "./routes/articleRoute.js";
+import { getAllArticles } from "./models/ArticlesModel.js";
 
 dotenv.config();
 
@@ -27,19 +28,21 @@ app.get("/categories/:id", (req, res) => {
   res.redirect(`/api/categories/${id}`);
 });
 
-app.get("/" , async (req, res) => {
-    try {
-        const [categories] = await getAllCategories();
-       
-        res.render("home", {
-            user: req.session?.user || null,
-            categories
-        });
-    }catch (err) {
-        res.status(500).send ("Erreur serveur");
-    }
-})
-
+app.get("/", async (req, res) => {
+  try {
+    const [categories] = await getAllCategories();
+    const articles = await getAllArticles();
+    console.log(articles);
+    res.render("home", {
+      user: req.session?.user || null,
+      categories,
+      articles,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Erreur serveur");
+  }
+});
 
 app.listen(PORT, () => {
   console.log(`le serveur tourne sur http://localhost:${PORT}`);
