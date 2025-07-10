@@ -4,7 +4,7 @@ import  {getAllContacts, createContact} from '../models/ContactModel.js';
 export async function listContacts(req, res) {
     try {
         const contacts = await getAllContacts(); 
-        res.render("contact", { contacts });  
+        res.render("_contact", { contacts });  
     } catch (err) {
         console.error(err);
         res.status(500).render("contact", {
@@ -24,10 +24,10 @@ export async function submitContactForm(req, res) {
 
         await createContact({ name, firstname, email, messages });
 
-        res.status(201).render("contact", { success: "Contact enregistré avec succès" });
+        res.status(201).render("_contact", { success: "Contact enregistré avec succès" });
     } catch (err) {
         console.error(err);
-        res.status(500).render("contact", { error: "Erreur serveur" });
+        res.status(500).render("_contact", { error: "Erreur serveur" });
     }
 }
 

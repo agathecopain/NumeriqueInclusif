@@ -6,12 +6,24 @@
 
 
 
-<h1>Formulaire de contact</h1>
 {% if error %}<p style="color:red;">{{ error }}</p>{% endif %}
 {% if success %}<p style="color:green;">{{ success }}</p>{% endif %}
 
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#contactModal">
+  Écrire un message
+</button>
 
-<form method="post" action="/contact">
+<div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactModalLabel">Formulaire de contact</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+      </div>
+
+      <div class="modal-body">
+<form method="post" action="/api/contact">
     <div class="mb-3">
         <label for="name" class="form-label">Nom</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Votre nom" required>
@@ -30,19 +42,11 @@
     </div>
     <button type="submit" class="btn btn-primary">Envoyer</button>
 </form>
+ </div>
 
-<h2>Contacts enregistrés :</h2>
-{% if contacts.length > 0 %}
-    <ul>
-        {% for c in contacts %}
-            <li>
-                <strong>{{ c.name }} {{ c.firstname }}</strong><br>
-                Email : {{ c.email }}<br>
-                Message : {{ c.messages }}
-            </li>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Aucun contact enregistré.</p>
-{% endif %}
+    </div>
+  </div>
+</div>
+
+
 
