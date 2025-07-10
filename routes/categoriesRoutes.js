@@ -1,6 +1,6 @@
 import express from "express";
 import {body} from "express-validator";
-import { addCategorie, listerCategories } from "../controllers/categoriesControllers.js";
+import { addCategorie, listerCategories, showCategorie } from "../controllers/categoriesControllers.js";
 import {validate} from "../middleware/validation.js";
 
 const router = express.Router();
@@ -14,6 +14,7 @@ router.post(
   addCategorie
 );
 router.get("/", listerCategories);
+router.get("/:id", showCategorie)
 
 export default router;
 

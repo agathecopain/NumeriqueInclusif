@@ -1,4 +1,4 @@
-import { createCategorie, getAllCategories } from "../models/CategoriesModel.js";
+import { createCategorie, getAllCategories, getCategorieById } from "../models/CategoriesModel.js";
 
 export const addCategorie = async (req, res) => {
     const {nom, description} = req.body;
@@ -19,4 +19,21 @@ export const listerCategories = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+export const showCategorie = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const [rows] = await getCategorieById(id);
+
+        if (rows.length === 0) {
+            return res.status(404).send("Catégorie non trouvée");
+        }
+
+        
+        res.render("category.twig", { category: rows[0] });
+    } catch (err) {
+        res.status(500).send("Erreur serveur");
+    }
+};
+
 
