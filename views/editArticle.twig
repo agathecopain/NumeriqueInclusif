@@ -27,7 +27,7 @@
 						<option value="" disabled {% if not selected_category_id %} selected {% endif %}>Choisir une catégorie</option>
 						{% for category in categories %}
 							<option value="{{ category.id }}" {% if category.id == selected_category_id %} selected {% endif %}>
-								{{ category.nom }}
+								{{ category.name }}
 							</option>
 						{% else %}
 							<option value="">Aucune catégorie disponible</option>

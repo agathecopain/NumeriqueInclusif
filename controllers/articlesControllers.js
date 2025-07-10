@@ -19,6 +19,7 @@ export async function edit(req, res) {
   try {
     await createArticle(title, category_id, description, content, image_url);
     res.status(201).json({ message: "Article ajouté" });
+    res.render("editArticle", { error: null, sucess: null, categories: rows });
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
