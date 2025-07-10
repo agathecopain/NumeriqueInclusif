@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+		<title>Édition</title>
+	</head>
+	<body>
+		{% include "_navBar.twig" %}
+		<section class="container my-5">
+			<form class="mx-auto" style="max-width: 600px;" action="/api/article/edit" method="POST" enctype="multipart/form-data">
+
+				<div class="mb-3">
+					<label for="title" class="form-label">Titre</label>
+					<input type="text" class="form-control" id="title" name="title">
+				</div>
+
+				<div class="mb-3">
+					<label for="description" class="form-label">Description</label>
+					<input type="text" class="form-control" id="description" name="description">
+				</div>
+
+				<div class="mb-3">
+					<label for="category" class="form-label">Catégorie</label>
+					<select id="category" name="category" class="form-select" required>
+						<option value="" disabled {% if not selected_category_id %} selected {% endif %}>Choisir une catégorie</option>
+						{% for category in categories %}
+							<option value="{{ category.id }}" {% if category.id == selected_category_id %} selected {% endif %}>
+								{{ category.nom }}
+							</option>
+						{% else %}
+							<option value="">Aucune catégorie disponible</option>
+						{% endfor %}
+					</select>
+				</div>
+
+				<div class="mb-3">
+					<label for="content" class="form-label">Contenu</label>
+					<textarea type="text" class="form-control" id="content" name="content" rows="10" required></textarea>
+				</div>
+
+				<div class="mb-3">
+					<input type="file" class="form-control" name="image" id="image" placeholder="Ajouter une image">
+				</div>
+
+				<button type="submit" class="btn btn-primary w-100">Publier l'article</button>
+
+			</form>
+		</section>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+</html>

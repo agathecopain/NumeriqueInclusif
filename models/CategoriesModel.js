@@ -12,3 +12,4 @@ export const getAllCategories = () => {
 export const getCategorieById = (id) => {
     return db.query("SELECT * FROM categories WHERE id = ?", [id]);
 };
+
