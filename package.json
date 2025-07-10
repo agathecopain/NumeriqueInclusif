@@ -2,7 +2,7 @@
   "name": "handiblog",
   "version": "1.0.0",
   "description": "Ce blog recense les différents handicaps rencontrés dans l’usage du numérique et propose des solutions concrètes pour améliorer l’accessibilité et l’inclusion digitale.",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
@@ -22,8 +22,8 @@
     "cors": "^2.8.5",
     "dotenv": "^17.0.1",
     "express": "^5.1.0",
-    "express-validator": "^7.2.1",
     "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
     "multer": "^2.0.1",
     "mysql2": "^3.14.1",
     "twig": "^1.17.1"
