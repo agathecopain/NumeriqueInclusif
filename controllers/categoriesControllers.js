@@ -28,10 +28,10 @@ export const showCategorie = async (req, res) => {
             return res.status(404).send("Catégorie non trouvée");
         }
 
-        
-        res.render("category.twig", { category: rows[0] });
-    } catch (err) {
-        res.status(500).send("Erreur serveur");
-    }
-};
+    const [categories] = await getAllCategories();
 
+    res.render("category.twig", { category: rows[0], categories, user: req.session?.user || null });
+  } catch (err) {
+    res.status(500).send("Erreur serveur");
+  }
+};
