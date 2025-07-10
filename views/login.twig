@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion - HANDIBLOG</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>HANDIBLOG</h1>
+      <div class="nav-links">
+        <a href="/">Accueil</a>
+        <a href="/login">Connexion</a>
+        <a href="/register">S'inscrire</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Connexion 🔐</h2>
+    <form method="POST" action="/api/auth/login">
+      <label for="email">Email :</label>
+      <input type="email" name="email" id="email" required>
+
+      <label for="password">Mot de passe :</label>
+      <input type="password" name="password" id="password" required>
+
+      <button type="submit">Se connecter</button>
+    </form>
+  </main>
+</body>
+</html>

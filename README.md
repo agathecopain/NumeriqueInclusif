@@ -20,18 +20,27 @@ handiBlog/
 ├── controllers/
 │   └── auth.controller.js
 │   └── articles.controller.js
+|   └── categories.controller.js
+|   └── contact.controller.js
 ├── models/
 │   └── UsersModel.js
 │   └── ArticlesModel.js
+│   └── ContactModel.js
+│   └── UsersModel.js
 ├── views/
 │   └── home.twig
 │   └── login.twig
 │   └── register.twig
 │   └── articles.twig
 │   └── create_article.twig
+│   └── category.twig
+│   └── contact.twig
 ├── routes/
 │   └── auth.routes.js
 │   └── articles.routes.js
+│   └── categories..routes.js
+│   └── articles.routes.js
+│   └── contact.routes.js
 ├── .env
 ├── app.js
 ├── package.json
