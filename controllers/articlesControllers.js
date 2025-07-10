@@ -6,9 +6,11 @@ import {
   deleteArticleFromDb,
   getArticlesByCategory,
 } from "../models/ArticlesModel.js";
+import { getAllCategories } from "../models/CategoriesModel.js";
 
-export function showArticleForm(req, res) {
-  res.render("editArticle", { error: null, sucess: null });
+export async function showArticleForm(req, res) {
+  const [rows] = await getAllCategories();
+  res.render("editArticle", { error: null, sucess: null, categories: rows });
 }
 
 export async function edit(req, res) {

@@ -6,5 +6,4 @@ export const createCategorie= (nom, description) => {
 
 export const getAllCategories = () => {
     return db.query("SELECT * FROM categories");
-
 }
