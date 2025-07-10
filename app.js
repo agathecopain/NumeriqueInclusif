@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import contactRoute from './routes/contactRoute.js';
 import categoriesRoutes from './routes/categoriesRoutes.js'
 import { getAllCategories } from './models/CategoriesModel.js';
+import { showCategorie } from './controllers/categoriesControllers.js';
 import path from "path";
 import articleRoute from "./routes/articleRoute.js";
 
@@ -21,6 +22,10 @@ app.use("/api/contact", contactRoute);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/article", articleRoute);
 
+app.get("/categories/:id", (req, res) => {
+  const id = req.params.id;
+  res.redirect(`/api/categories/${id}`);
+});
 
 app.get("/" , async (req, res) => {
     try {
