@@ -26,7 +26,7 @@ export const register = async (req, res) => {
     const token = jwt.sign({ email }, process.env.JWT_SECRET, {
       expiresIn: "1d",
     });
-    const link = `http://localhost:3000/api/auth/verify/${token}`;
+    const link = `http://localhost:3002/api/auth/verify/${token}`;
 
     sendVerificationEmail(email, link);
 
