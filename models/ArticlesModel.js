@@ -41,7 +41,7 @@ export async function findArticleByTitle(title) {
   return rows[0];
 }
 
-export const updateArtcileInDb = (
+export const updateArticleInDb = (
   id,
   title,
   category_id,
