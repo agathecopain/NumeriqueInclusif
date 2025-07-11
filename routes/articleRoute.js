@@ -14,7 +14,7 @@ const router = express.Router();
 router.post("/edit", upload.single("image"), edit);
 
 router.get("/edit", verifyToken, authorizeRoles("admin"), showArticleForm);
-router.put("/:id", updateArtcile);
+router.put("/:id", updateArticle);
 
 router.delete("/:id", deleteArticle);
 
