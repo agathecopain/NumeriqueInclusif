@@ -12,15 +12,19 @@
 				<h1>HANDIBLOG</h1>
 				<div class="nav-links">
 					<a href="/">Accueil</a>
+
 					<a href="/api/auth/login">Connexion</a>
   					<a href="/api/auth/register">S’inscrire</a>
+
+				
+          {% include "_contact.twig" %}
+
 				</div>
 			</nav>
 		</header>
 
-		{% include "_navBar.twig" %}
+		{% include "_sideBar.twig" %}
 
-		{% include "_contact.twig" %}
 		<main>
 			<h2>Bienvenue sur HANDIBLOG
 			</h2>
