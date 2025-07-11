@@ -2,7 +2,7 @@ import {
   findArticleByTitle,
   createArticle,
   getAllArticles,
-  updateArtcileInDb,
+  updateArticleInDb,
   deleteArticleFromDb,
   getArticlesByCategory,
 } from "../models/ArticlesModel.js";
@@ -10,7 +10,7 @@ import { getAllCategories } from "../models/CategoriesModel.js";
 
 export async function showArticleForm(req, res) {
   const [rows] = await getAllCategories();
-  res.render("editArticle", { error: null, sucess: null, categories: rows });
+  res.render("editArticle", { error: null, success: null, categories: rows });
 }
 
 export async function edit(req, res) {
@@ -25,18 +25,13 @@ export async function edit(req, res) {
   }
 }
 
-export const listArticle = async (req, res) => {
-  const [rows] = await getAllArticles();
-  res.json(rows);
 
-};
-
-export const updateArtcile = async (req, res) => {
+export const updateArticle = async (req, res) => {
   const { id } = req.params;
   const { title, category_id, description, content } = req.body;
   const image_url = req.file ? req.file.filename : null;
   try {
-    await updateArtcileInDb(
+    await updateArticleInDb(
       id,
       title,
       category_id,
@@ -58,4 +53,11 @@ export const deleteArticle = async (req, res) => {
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
+};
+
+export const displayArticlesByCategorie = async (req, res) => {
+  const { id } = req.params;
+  const [rows] = await getArticlesByCategory(id);
+  console.log(rows);
+  res.render("category", { error: null, success: null, articles: rows });
 };
