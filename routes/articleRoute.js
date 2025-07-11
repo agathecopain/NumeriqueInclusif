@@ -7,11 +7,13 @@ import {
   deleteArticle,
 } from "../controllers/articlesControllers.js";
 import { upload } from "../middleware/upload.js";
+import { verifyToken } from "../middleware/auth.js";
+import { authorizeRoles } from "../middleware/roleMiddleware.js";
 
 const router = express.Router();
 
 router.post("/edit", upload.single("image"), edit);
-router.get("/edit", showArticleForm);
+router.get("/edit", verifyToken, authorizeRoles("admin"), showArticleForm);
 router.put("/:id", updateArtcile);
 router.delete("/:id", deleteArticle);
 

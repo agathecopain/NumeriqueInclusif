@@ -7,8 +7,7 @@ import { showCategorie } from "./controllers/categoriesControllers.js";
 import path from "path";
 import articleRoute from "./routes/articleRoute.js";
 import { getAllArticles } from "./models/ArticlesModel.js";
-
-
+import { verifyToken } from "./middleware/auth.js";
 
 dotenv.config();
 
@@ -21,19 +20,17 @@ app.set("views", "./views");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/api/contact", contactRoute);
+app.use("/api/contact", verifyToken, contactRoute);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/article", articleRoute);
 
-
-app.get('/login', (req, res) => {
-  res.render('login');
+app.get("/login", (req, res) => {
+  res.render("login");
 });
 
-app.get('/register', (req, res) => {
-  res.render('register');
+app.get("/register", (req, res) => {
+  res.render("register");
 });
-
 
 app.get("/categories/:id", (req, res) => {
   const id = req.params.id;
@@ -55,8 +52,6 @@ app.get("/", async (req, res) => {
     res.status(500).send("Erreur serveur");
   }
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`le serveur tourne sur http://localhost:${PORT}`);
