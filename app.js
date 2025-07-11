@@ -7,6 +7,7 @@ import { showCategorie } from "./controllers/categoriesControllers.js";
 import path from "path";
 import articleRoute from "./routes/articleRoute.js";
 import { getAllArticles } from "./models/ArticlesModel.js";
+import authRoute from "./routes/authRoute.js";
 import { verifyToken } from "./middleware/auth.js";
 
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/contact", verifyToken, contactRoute);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/article", articleRoute);
+app.use("/api/auth", authRoute);
 
 app.get("/login", (req, res) => {
   res.render("login");
